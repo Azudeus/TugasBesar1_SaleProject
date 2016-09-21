@@ -17,7 +17,7 @@ Email <br>
 <input type="text" name="email"><br><br>
 
 Password <br>
-<input type="text" name="password"><br><br>
+<input type="password" name="password"><br><br>
 
 Confirm Password <br>
 <input type="password" name="password"><br><br>
