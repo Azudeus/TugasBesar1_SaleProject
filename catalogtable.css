@@ -1,9 +1,12 @@
-
-tr:hover { 
-   background: red; 
+table, td, th {
+    border: 1px solid #ddd;
+    text-align: left;
 }
-td a { 
-   display: block; 
-   border: 1px solid black;
-   padding: 16px; 
+
+table {
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 15px;
 }
