@@ -1,0 +1,82 @@
+#title{
+	font : 30px arial;
+	text-align : center;
+}
+
+body{
+	margin-left : 150px;
+	margin-right : 150px;
+}
+
+#sale{
+	color : blue;
+}
+
+#project{
+	color : red;
+}
+
+#likebuy{
+	font : 20px arial;
+	text-align : right;
+}
+
+#like{
+	color : blue
+}
+
+#buy{
+	color : green;
+}
+
+h2{
+	font : 15px arial;
+	text-align : right;
+	line-height : 0px;
+	}
+
+#logout {
+	color : red;
+}
+
+#sale{
+
+}
+
+#catalog {
+	border-collapse: collapse;
+}
+
+a{text-decoration : none;
+color: black;}
+
+#itemname{
+	font-weight : bold;
+	font : 30px arial	;
+}
+
+#price{
+	font : 25px arial;
+}
+
+#catalog td, th {
+    border: 3px solid black;
+	text-align : center;
+	font-family : arial;
+	font-size : 20px;
+	color: #ff0000;
+	width : 250px;
+	height : 50px;
+}
+
+#bluelink{
+	font : 30px;
+	color: white;
+}
+
+#catalog td.blue{
+	background : #4169E1;
+
+}
+
+
