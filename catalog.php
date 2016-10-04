@@ -39,10 +39,11 @@ if (!$conn) {
 	</tr>
 </table>
 <p id = "SubHeader">What are you going to buy today?</p>
+<hr>
 <p> insert search engine here</p>
 
 <?php
-	$query = "SELECT username,product_description,product_price,likes,purchase,product_datetime,product_name from product";
+	$query = "SELECT username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product";
 	$q_result = $conn->query($query);
 	
 	if($q_result-> num_rows > 0){
@@ -52,11 +53,34 @@ if (!$conn) {
 			$mysqldate1 = date('l, d F Y',$phpdate);
 			$mysqldate2 = date('H i',$phpdate);
 			echo "<p id = 'product'><b>". $row["username"] .
-			"</b> <br> added this on ". $mysqldate1 .", at ". $mysqldate2 ."<br>".
-			"<span id = 'itemname'>" . $row["product_name"] . "</span> 
-			<br> <span id = 'price'> IDR " . $row["product_price"] . "</span><br> " . $row["product_description"] . "<br> " .
-			$row["likes"] ." likes <br>" .
-			$row["purchase"] ." purchase<br>" . " <div id ='likebuy'> <span id = 'like'> like</span>   <span id = 'buy'> buy </span> </div>"
+			"</b> <br> added this on ". $mysqldate1 .", at ". $mysqldate2 ."<br><hr>".
+			"<table class = 'producttable'>
+			<tr> 
+				<td rowspan = '5' class = 'left' width = 128px> <img src = 'img/" . $row["imgsrc"] . ".JPG' style = 'width:128px;height:128px;' > </td>
+				<td colspan = '2' class = 'left'> <span id = 'itemname'>" . $row["product_name"] . "</span> </td>
+			</tr>
+			<tr>
+				<td> <span id = 'price'> IDR " . $row["product_price"] . "</span> </td>
+				<td colspan = '2'> " . $row["likes"] . " likes </td>
+			</tr>
+			<tr> 
+				<td> ". $row["product_description"] . "</td>
+				<td colspan = '2'> ". $row["purchase"] ." purchase </td>
+			</tr>
+			<tr height = 22>
+				<!-- dummy -->
+				<td colspan = '3'></td>
+			</tr>
+			
+			<tr>
+				<td></td>
+				<td class = 'small likebuy like'> like </td>
+				<td class = 'small likebuy buy'> buy </td>
+			</tr>
+			</table>
+			<br>
+			<hr>
+				"
 			;
 		}
 		
