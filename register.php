@@ -38,9 +38,12 @@ Phone Number<br>
 <div id="submitAlign">
 <input type="submit" value="Register" id="submitButton"><br>
 </div>
+</div>
 </form>
 <br><br>
 
 <h2 id="account">Already registered? Login 
 <a href="login.php" id="link">here</a></h2>
 <br><br>
+</body>
+</html>
