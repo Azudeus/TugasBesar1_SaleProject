@@ -1,33 +1,23 @@
-#title{
-	font : 30px arial;
-	text-align : center;
-}
-
 body{
 	margin-left : 150px;
 	margin-right : 150px;
+	
+	font-family : arial;
+}
+
+#title{
+	font : 50px arial;
+	text-align : center;
 }
 
 #sale{
-	color : blue;
+	color : FireBrick;
 }
 
 #project{
-	color : red;
+	color : CornflowerBlue;
 }
 
-#likebuy{
-	font : 20px arial;
-	text-align : right;
-}
-
-#like{
-	color : blue
-}
-
-#buy{
-	color : green;
-}
 
 h2{
 	font : 15px arial;
@@ -47,6 +37,16 @@ h2{
 	border-collapse: collapse;
 }
 
+h3{
+	font : 25px arial;
+	text-align : left;
+	font-weight : bold
+}
+
+#SubHeader {
+
+}
+
 a{text-decoration : none;
 color: black;}
 
@@ -60,6 +60,7 @@ color: black;}
 }
 
 #catalog td, th {
+	text-transform : capitalize;
     border: 3px solid black;
 	text-align : center;
 	font-family : arial;
@@ -76,7 +77,73 @@ color: black;}
 
 #catalog td.blue{
 	background : #4169E1;
+}
+
+.producttable {
+	width : 100%;	
+	
+	}
+
+.producttable tr{
+	height : 11px;
+
 
 }
 
+.producttable td.right{
+	text-align : right;
+}
 
+.producttable td.likebuy{
+	font : 20px arial;
+	text-transform : uppercase;
+	font-weight : bold;
+}
+
+.producttable td.like{
+	color : cornflowerblue
+}
+
+.producttable td.small{
+	width : 80px;
+}
+
+.producttable td.buy{
+	color : green;
+}
+
+#submitAlign {
+	text-align: right;
+}
+
+#submitButton {
+	font : 15px arial;
+	
+	color : white;
+	background-color: blue;
+	width: auto;
+	height: auto;
+	padding: 5px;
+}
+
+#title{
+	font : 35px arial;
+	text-align : center;
+}
+
+#account {
+	font-weight: bold;
+	text-align: left;
+}
+
+#SubHeader{
+	font : 30px Arial;
+	font-weight : bold;
+}
+
+#formField {
+	width : 100%;
+}
+
+#link {
+	color : blue;

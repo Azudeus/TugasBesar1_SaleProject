@@ -1,23 +1,27 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css">
+</head>
 <body>
+<h1 id="title"><span id="sale">Sale</span><span id="project">Project</span></span></h1>
+<h3 id="subHeader"> Please Login </h3>
+<hr>
 
-<h1><center> SaleProject </h1></center><br>
-<p> Please Login </p>
-
-<form action = "welcome.php" method ="post">
+<form action = "welcome.php" method ="GET">
 
 Email or Username <br>
-<input type="text" name="username"><br><br>
+<input type="text" name="username" id="formField"><br><br>
 
 Password <br>
-<input type="password" name="password"><br><br>
+<input type="password" name="password" id="formField"><br><br>
 
-Register<br>
-<input type="submit" value="LOGIN"><br>
+<div id="submitAlign">
+<input type="submit" value="LOGIN" id="submitButton"><br>
+</div>
 </form>
 <br><br>
 
-<p>Don't have an account yet? Register
-<a href="register.php">here</a>
+<h2 id="account">Don't have an account yet? Register
+<a href="register.php" id="link">here</a>
 <br><br>
