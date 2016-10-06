@@ -5,11 +5,11 @@
 </head>
 <body>
 
-<h1 id="title"><span id = "sale"> Sale </span><span id="project">Project </span></h1>
+<h1 id="title"><span id = "sale">Sale</span><span id="project">Project </span></h1>
 <h3 id="subHeader"> Please Register </h3>
 <hr>
 
-<form action = "welcome.php" method ="post">
+<form action = "" method ="post">
 <div id="formField">
 Full Name <br>
 <input type="text" name="name" id="formField"><br><br>
@@ -38,9 +38,17 @@ Phone Number<br>
 <div id="submitAlign">
 <input type="submit" value="Register" id="submitButton"><br>
 </div>
+</div>
 </form>
 <br><br>
 
 <h2 id="account">Already registered? Login 
 <a href="login.php" id="link">here</a></h2>
 <br><br>
+
+<?php
+include "process_register.php"
+?>
+
+</body>
+</html>

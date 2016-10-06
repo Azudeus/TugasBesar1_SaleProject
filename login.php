@@ -4,11 +4,11 @@
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-<h1 id="title"><span id="Sale">Sale</span><span id="project">Project</span></span></h1>
+<h1 id="title"><span id="sale">Sale</span><span id="project">Project</span></span></h1>
 <h3 id="subHeader"> Please Login </h3>
 <hr>
 
-<form action = "welcome.php" method ="post">
+<form action = "process_login.php" method ="GET">
 
 Email or Username <br>
 <input type="text" name="username" id="formField"><br><br>

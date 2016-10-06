@@ -29,17 +29,22 @@ h2{
 	color : red;
 }
 
-#SubHeader{
-	font : 30px Arial;
-	font-weight : bold;
-}
-
 #sale{
 
 }
 
 #catalog {
 	border-collapse: collapse;
+}
+
+h3{
+	font : 25px arial;
+	text-align : left;
+	font-weight : bold
+}
+
+#SubHeader {
+
 }
 
 a{text-decoration : none;
@@ -105,3 +110,38 @@ color: black;}
 	color : green;
 }
 
+#submitAlign {
+	text-align: right;
+}
+
+#submitButton {
+	font : 15px arial;
+	
+	color : white;
+	background-color: blue;
+	width: auto;
+	height: auto;
+	padding: 5px;
+}
+
+#title{
+	font : 35px arial;
+	text-align : center;
+}
+
+#account {
+	font-weight: bold;
+	text-align: left;
+}
+
+#SubHeader{
+	font : 30px Arial;
+	font-weight : bold;
+}
+
+#formField {
+	width : 100%;
+}
+
+#link {
+	color : blue;
