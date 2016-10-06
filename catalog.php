@@ -1,5 +1,5 @@
 <?php
-$servername = "localhost:3307";
+$servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "saleproject";
@@ -8,6 +8,9 @@ session_start();
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
 $_SESSION["username"] = "Anthony";
+
+$tab = "catalog";
+
 
 // Check connection
 if (!$conn) {
@@ -63,8 +66,8 @@ if (!$conn) {
 			
 			<tr>
 				<td></td>
-				<td class = 'likebuy' > <a class ='like' product_id=". $row["product_id"] . "  href='javascript:void(0)' onclick = 'like(this)'>like</a></td>
-				<td class = 'likebuy class = buy'> <a href='confirmbuy.php?=user_id=?" .$row["product_id"]."'> buy</td>
+				<td class = 'likebuy'> <a class ='bluelink' product_id=". $row["product_id"] . "  href='javascript:void(0)' onclick = 'like(this)' >like</a></td>
+				<td class = 'likebuy'> <a href='confirmbuy.php?product_id=" .$row["product_id"]."' class = 'greenlink'> buy</td>
 			</tr>
 			</table>
 			<br>
