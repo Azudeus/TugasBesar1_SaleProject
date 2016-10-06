@@ -46,12 +46,12 @@ a{text-decoration : none;
 color: black;}
 
 #itemname{
+	font : 25px arial;
 	font-weight : bold;
-	font : 30px arial	;
 }
 
 #price{
-	font : 25px arial;
+	font : 20px arial;
 }
 
 #catalog td, th {
@@ -93,14 +93,12 @@ color: black;}
 	font : 20px arial;
 	text-transform : uppercase;
 	font-weight : bold;
+	width : 80px;
+
 }
 
 .producttable td.like{
 	color : cornflowerblue
-}
-
-.producttable td.small{
-	width : 80px;
 }
 
 .producttable td.buy{

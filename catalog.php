@@ -13,37 +13,26 @@ $_SESSION["username"] = "Anthony";
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
 ?>
+<script>
+	var user_id = "<?php echo "$_SESSION[username]"?>";
+</script>
+<script src="script/like.js"></script>
+
 
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
+<?php include "header.php"; ?>
 
-<h1 id = "title"><span id="sale">Sale</span><span id="project">Project</span></h1>
-
-
-<h2 id = "hellouser">Hi, <?php echo $_SESSION["username"]; ?> !</h2>
-<h2 id = "logout">logout</h3><br>
-
-<table id = "catalog">
-	<tr>
-		<td class = "blue"><a href="catalog.php" id ="bluelink">catalog</a></td>
-		<td class = "nobg"><a href="yourproduct.php">your product</a></td>
-		<td class = "nobg"><a href="addproduct.php">add product</a></td>
-		<td class = "nobg"><a href="sales.php">sales</a></td>
-		<td class = "nobg"><a href="purchases.php">purchases</a></td>
-	</tr>
-</table>
 <p id = "SubHeader">What are you going to buy today?</p>
 <hr>
 <p> insert search engine here</p>
 
 <?php
-	$query = "SELECT username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product";
+	$query = "SELECT product_id,username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product";
 	$q_result = $conn->query($query);
 	
 	if($q_result-> num_rows > 0){
@@ -61,7 +50,7 @@ if (!$conn) {
 			</tr>
 			<tr>
 				<td> <span id = 'price'> IDR " . $row["product_price"] . "</span> </td>
-				<td colspan = '2'> " . $row["likes"] . " likes </td>
+				<td colspan = '2' class ='like_count_" .$row["product_id"]. "	'>"  . $row["likes"] . " likes </td>
 			</tr>
 			<tr> 
 				<td> ". $row["product_description"] . "</td>
@@ -74,14 +63,12 @@ if (!$conn) {
 			
 			<tr>
 				<td></td>
-				<td class = 'small likebuy like'> like </td>
-				<td class = 'small likebuy buy'> buy </td>
+				<td class = 'likebuy' > <a class ='like' product_id=". $row["product_id"] . "  href='javascript:void(0)' onclick = 'like(this)'>like</a></td>
+				<td class = 'likebuy class = buy'> <a href='confirmbuy.php?=user_id=?" .$row["product_id"]."'> buy</td>
 			</tr>
 			</table>
 			<br>
-			<hr>
-				"
-			;
+			<hr>";
 		}
 		
 	}?>
