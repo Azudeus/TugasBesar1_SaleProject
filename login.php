@@ -8,7 +8,7 @@
 <h3 id="subHeader"> Please Login </h3>
 <hr>
 
-<form action = "welcome.php" method ="GET">
+<form action = "process_login.php" method ="GET">
 
 Email or Username <br>
 <input type="text" name="username" id="formField"><br><br>

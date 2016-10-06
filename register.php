@@ -9,7 +9,7 @@
 <h3 id="subHeader"> Please Register </h3>
 <hr>
 
-<form action = "process_register.php" method ="post">
+<form action = "" method ="post">
 <div id="formField">
 Full Name <br>
 <input type="text" name="name" id="formField"><br><br>
@@ -45,5 +45,10 @@ Phone Number<br>
 <h2 id="account">Already registered? Login 
 <a href="login.php" id="link">here</a></h2>
 <br><br>
+
+<?php
+include "process_register.php"
+?>
+
 </body>
 </html>
