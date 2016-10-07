@@ -18,12 +18,50 @@ body{
 	color : CornflowerBlue;
 }
 
+.font20{
+	font-family : arial,monospace;
+	font-size : 20px;
+}
+
+.font18{
+	font-size : 18px;
+}
+
+.button {
+    background-color: lightskyblue;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+	font-family : arial;
+    font-size : 18px;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+
+.width100{
+	width : 100%;
+}
+
+.lineheight15{
+	line-height : 15px;
+}
+
+.inline{
+	display : inline;
+}
+.quantity{
+	width : 50px;
+}
 
 h2{
-	font : 15px arial;
+	font : 20px arial;
 	text-align : right;
-	line-height : 0px;
-	}
+	line-height : 0px;	
+}
 
 #logout {
 	color : red;
@@ -43,20 +81,16 @@ h3{
 	font-weight : bold
 }
 
-#SubHeader {
-
-}
-
 a{text-decoration : none;
 color: black;}
 
 #itemname{
+	font : 25px arial;
 	font-weight : bold;
-	font : 30px arial	;
 }
 
 #price{
-	font : 25px arial;
+	font : 20px arial;
 }
 
 #catalog td, th {
@@ -70,9 +104,24 @@ color: black;}
 	height : 50px;
 }
 
-#bluelink{
-	font : 30px;
+.right{
+	text-align : right;
+}
+
+.whitelink{
 	color: white;
+}
+
+.greenlink{
+	color : green;
+}
+
+.bluelink{
+	color : cornflowerblue;
+}
+
+.redlink{
+	color : red;
 }
 
 #catalog td.blue{
@@ -98,33 +147,10 @@ color: black;}
 	font : 20px arial;
 	text-transform : uppercase;
 	font-weight : bold;
-}
-
-.producttable td.like{
-	color : cornflowerblue
-}
-
-.producttable td.small{
 	width : 80px;
+
 }
 
-.producttable td.buy{
-	color : green;
-}
-
-#submitAlign {
-	text-align: right;
-}
-
-#submitButton {
-	font : 15px arial;
-	
-	color : white;
-	background-color: blue;
-	width: auto;
-	height: auto;
-	padding: 5px;
-}
 
 #title{
 	font : 35px arial;
@@ -144,6 +170,3 @@ color: black;}
 #formField {
 	width : 100%;
 }
-
-#link {
-	color : blue;

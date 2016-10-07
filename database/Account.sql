@@ -26,7 +26,7 @@ CREATE TABLE `account` (
   `account_id` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(155) DEFAULT NULL,
   `email` varchar(155) DEFAULT NULL,
-  `password` int(20) DEFAULT NULL,
+  `password` varchar(155) DEFAULT NULL,
   `name` varchar(155) DEFAULT NULL,
   `address` varchar(156) NOT NULL,
   `postal` int(11) NOT NULL,
@@ -41,7 +41,7 @@ CREATE TABLE `account` (
 
 LOCK TABLES `account` WRITE;
 /*!40000 ALTER TABLE `account` DISABLE KEYS */;
-INSERT INTO `account` VALUES (1,'azu','azu@gmail.com','150','Dav','IB43','41102','081529442211');
+INSERT INTO `account` VALUES (1,'azu','azu@gmail.com','Ax150','Dav','IB43','41102','081529442211');
 /*!40000 ALTER TABLE `account` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
