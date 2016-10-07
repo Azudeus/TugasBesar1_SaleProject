@@ -7,7 +7,14 @@ $tab = "confirmbuy";
 session_start();
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-$_SESSION["username"] = "Anthony";
+$account_id = $_GET["account_id"];
+
+$account_query = "SELECT username from account where account_id =".$account_id;
+$account_query_result = $conn->query($account_query);
+$account_query_assoc = $account_query_result->fetch_assoc();
+$account_username = $account_query_assoc["username"];
+
+
 // Check connection
 if (!$conn)
 	die("Connection failed: " . mysqli_connect_error());

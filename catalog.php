@@ -6,20 +6,19 @@ $dbname = "saleproject";
 session_start();
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
-
-$_SESSION["username"] = "Anthony";
-
+$account_id = $_GET["account_id"];
 $tab = "catalog";
 
+$account_query = "SELECT username from account where account_id =".$account_id;
+$account_query_result = $conn->query($account_query);
+$account_query_assoc = $account_query_result->fetch_assoc();
+$account_username = $account_query_assoc["username"];
 
 // Check connection
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 ?>
-<script>
-	var user_id = "<?php echo "$_SESSION[username]"?>";
-</script>
 <script src="script/like.js"></script>
 
 
@@ -67,7 +66,7 @@ if (!$conn) {
 			<tr>
 				<td></td>
 				<td class = 'likebuy'> <a class ='bluelink' product_id=". $row["product_id"] . "  href='javascript:void(0)' onclick = 'like(this)' >like</a></td>
-				<td class = 'likebuy'> <a href='confirmbuy.php?product_id=" .$row["product_id"]."' class = 'greenlink'> buy</td>
+				<td class = 'likebuy'> <a href='confirmbuy.php?product_id=" .$row["product_id"]."&account_id=".$account_id."' class = 'greenlink'> buy</td>
 			</tr>
 			</table>
 			<br>

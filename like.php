@@ -7,7 +7,6 @@ session_start();
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-$_SESSION["username"] = "Anthony";
 
 // Check connection
 if (!$conn) {

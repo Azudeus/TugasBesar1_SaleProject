@@ -36,14 +36,14 @@ Phone Number<br>
 <input type="number" name="number" id="formField"><br><br>
 
 <div id="submitAlign">
-<input type="submit" value="Register" id="submitButton"><br>
+<input type="submit" value="Register" class="button"><br>
 </div>
 </div>
 </form>
 <br><br>
 
 <h2 id="account">Already registered? Login 
-<a href="login.php" id="link">here</a></h2>
+<a href="login.php" class="bluelink">here</a></h2>
 <br><br>
 
 <?php
