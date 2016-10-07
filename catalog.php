@@ -32,10 +32,10 @@ if (!$conn) {
 <p id = "SubHeader">What are you going to buy today?</p>
 <hr>
 <p> insert search engine here</p>
-
 <?php
 	$query = "SELECT product_id,username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product";
 	$q_result = $conn->query($query);
+	
 	
 	if($q_result-> num_rows > 0){
 		//output data of each row from database
@@ -43,7 +43,14 @@ if (!$conn) {
 			$phpdate = strtotime($row["product_datetime"]);
 			$mysqldate1 = date('l, d F Y',$phpdate);
 			$mysqldate2 = date('H i',$phpdate);
-			echo "<p id = 'product'><b>". $row["username"] .
+			$product_id = $row["product_id"];
+			$query_checksame = $conn->query("SELECT EXISTS(SELECT * FROM likes where product_id =". $product_id ." and account_id =". $account_id.") as exist");
+			$checksame_row = $query_checksame -> fetch_assoc();
+			$checksame = $checksame_row["exist"];
+			
+			echo "
+			<div id = 'asd'></div>
+			<p id = 'product'><b>". $row["username"] .
 			"</b> <br> added this on ". $mysqldate1 .", at ". $mysqldate2 ."<br><hr>".
 			"<table class = 'producttable'>
 			<tr> 
@@ -65,12 +72,14 @@ if (!$conn) {
 			
 			<tr>
 				<td></td>
-				<td class = 'likebuy'> <a class ='bluelink' product_id=". $row["product_id"] . "  href='javascript:void(0)' onclick = 'like(this)' >like</a></td>
+				<td class = 'likebuy'> <a id = 'like_".$product_id."' class ='bluelink' account_id=".$account_id." product_id=". $row["product_id"] . "  href='javascript:void(0)' onclick = 'like(this)' >like</a></td>
 				<td class = 'likebuy'> <a href='confirmbuy.php?product_id=" .$row["product_id"]."&account_id=".$account_id."' class = 'greenlink'> buy</td>
 			</tr>
 			</table>
 			<br>
-			<hr>";
+			<hr>
+			<script>update(".$product_id.",". $checksame . ")</script>
+			";
 		}
 		
 	}?>
