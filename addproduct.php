@@ -1,14 +1,18 @@
 <?php
-    $servername = "localhost:3307";
+    $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "saleproject";
     session_start();
     // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	$account_id = $_GET["account_id"];
+	$tab = "add_product";
 
-    //$_SESSION["username"] = "rellons";
-    $activeuser = $_GET["account_id"];
+	$account_query = "SELECT username from account where account_id =".$account_id;
+	$account_query_result = $conn->query($account_query);
+	$account_query_assoc = $account_query_result->fetch_assoc();
+	$account_username = $account_query_assoc["username"];
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
@@ -19,24 +23,11 @@
 <html>
 <head>
     <title> Add Product </title>
-    <link rel="stylesheet" type="text/css" href="yourProduct.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src ="myAddProduct.js"></script>
 </head>
 <body>
-<h1 id = "title"><span id="sale">Sale</span><span id="project">Project</span></h1>
-<h2 id = "hellouser">Hi, <?php echo $activeuser; ?> !</h2>
-<h2 id = "logout">logout</h3><br>
-
-<table id = "catalog">
-	<tr>
-		<td class = "nobg"><a href="catalog.php">catalog</a></td>
-		<td class = "nobg"><a href="yourproduct.php">your product</a></td>
-		<td class = "blue"><a href="addproduct.php" id = "bluelink">add product</a></td>
-		<td class = "nobg"><a href="sales.php">sales</a></td>
-		<td class = "nobg"><a href="purchases.php">purchases</a></td>
-	</tr>
-</table>
-
+<?php include "header.php" ?>
 </body>
 <!-- TODO : validasi-->
 <p id = "SubHeader">Please add your product here. <br>
@@ -44,7 +35,7 @@
 <form name ="myProductForm" onsubmit="return myProductValidate(myProductForm)" 
       action="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST"
       enctype="multipart/form-data">
-        <span id = "fName"> Name </span><br>
+        <span id = "fName"> Name </spa	n><br>
         <input type ="text" name ="Name"><br>
         <span id = "fDesc"> Description (max 200 chars) </span><br>
         <input type ="text" name ="description"><br>
@@ -56,7 +47,7 @@
      <table>
          <td> <input type = "submit" id = "addbutton" value ="ADD"> 
          <td> <input type = "button" id = "cancelbutton" value ="CANCEL" 
-                     onclick = "myProductCancel(<?php //echo($activeuser) ?>)">
+                     onclick = "myProductCancel(<?php //echo($account_id) ?>)">
      </table>
 </form>-->
 
@@ -73,7 +64,7 @@
      <table>
          <td> <input type = "submit" id = "addbutton" value ="ADD" onclick="myProductValidate(false)"> 
          <td> <input type = "button" id = "cancelbutton" value ="CANCEL" 
-                     onclick = "myProductCancel(<?php echo($activeuser) ?>)">
+                     onclick = "myProductCancel(<?php echo($account_id) ?>)">
      </table>
 </div>
 </body>

@@ -18,8 +18,8 @@ $account_username = $account_query_assoc["username"];
 // Check connection
 if (!$conn)
 	die("Connection failed: " . mysqli_connect_error());
-$pid = $_GET["product_id"];
-$query = "SELECT username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product WHERE product_id =".$pid.";";
+$product_id = $_GET["product_id"];
+$query = "SELECT username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product WHERE product_id =".$product_id.";";
 $q_result = $conn->query($query);
 $row = $q_result-> fetch_assoc();
 ?>
@@ -35,16 +35,16 @@ $row = $q_result-> fetch_assoc();
 <p id = "SubHeader">Please confirm your purchase</p>
 <hr>
 <br>
+<form action="confirmbuy_action.php?account_id=<?php echo $account_id?> " method="get" class = "inline">
 <pre><div class = 'font20 lineheight15'>
 Product		: <?php echo $row["product_name"]?><br>
-Price 		: IDR <?php echo $row["product_price"]?><br>
-Quantity		: <form class = "inline"><input name="quantity" price =<?php echo $row["product_price"]?> type = "text" onkeyup ="buy(this)" class = "quantity"></form> pcs<br>
+Price 		: <span id="price"></span><br><script>writePrice(<?php echo $row["product_price"] ?>)</script>
+Quantity		: <input name="quantity" price =<?php echo $row["product_price"]?> type = "text" onkeyup ="buy(this)" class = "quantity"> pcs<br>
 Total Price 	: <span class = "total_price"> Please insert Quantity</span>	<br>
 Deliver to		:
 </div>
 </pre>
 <div class = 'font18'>
-<form>
 Consignee<br>
 <input name="consignee" type="text" class = "width100">
 <br><br>
@@ -62,6 +62,9 @@ Phone Number<br>
 <br><br>
 3 Digits Card Verification Value
 <input name="credit_veri" type="text" class = "width100">
+<input name="account_id" type="hidden" value = "<?php echo $account_id?>" >
+<input name="product_id" type="hidden" value = "<?php echo $product_id?>" >
+
 <br><br>
 <div class = "right">
 <br>
