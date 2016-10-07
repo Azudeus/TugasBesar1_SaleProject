@@ -23,11 +23,10 @@ if (isset($_POST['username'])) {
 
 	if ($checkrows>0){
 		echo "customer exists";
+		echo "<p>Employee NOT added</p>";
+		echo mysqli_error($conn);
 	} else {
 		mysqli_query($conn,"INSERT INTO account(username,email,password,name,address,postal,number) values ('$username','$email','$password','$name','$address','$postal','$number')");
-	}
-
-	if (mysqli_affected_rows($conn)>0) {
 		$query = "select * from account where username='$username' and password='$password'";
 		$q_result = $conn->query($query);
 
@@ -36,9 +35,6 @@ if (isset($_POST['username'])) {
 		}
 
 		header ("Location:catalog.php?account_id=".$id);
-	} else {
-		echo "<p>Employee NOT added</p>";
-		echo mysqli_error($conn);
 	}
 };
 ?>

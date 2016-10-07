@@ -5,11 +5,14 @@
 </head>
 <body>
 
+<script src="script/validateRegister.js"></script>
+
+
 <h1 id="title"><span id = "sale">Sale</span><span id="project">Project </span></h1>
 <h3 id="subHeader"> Please Register </h3>
 <hr>
 
-<form action = "" method ="post">
+<form name="register" action = "" method ="post" onSubmit="return validateRegister()">
 <div id="formField">
 Full Name <br>
 <input type="text" name="name" id="formField"><br><br>
@@ -24,7 +27,7 @@ Password <br>
 <input type="password" name="password" id="formField"><br><br>
 
 Confirm Password <br>
-<input type="password" name="password" id="formField"><br><br>
+<input type="password" name="confirm" id="formField"><br><br>
 
 Full Address <br>
 <textarea rows="3" cols="50" name="address" id="formField"></textarea><br><br>
