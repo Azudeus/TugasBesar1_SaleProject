@@ -1,5 +1,5 @@
 //validate user input
-function myProductValidate(){
+function myProductValidate(update, productId){
     var name = document.getElementById("Name").value;
     var desc = document.getElementById("description").value;
     var prc = document.getElementById("price").value;
@@ -86,7 +86,12 @@ function myProductValidate(){
             }
         };
         //open connection
-        xconnect.open("POST", "formUpload.php", true);
+        if(update){
+            xconnect.open("POST", "formUpdate.php?account_id="+username+"&prod_id="+productId, true);
+        }
+        else{
+            xconnect.open("POST", "formUpload.php?account_id="+username, true);
+        }
         xconnect.setRequestHeader("Content-Type", "multipart/form-data");
         xconnect.send(data);
     }

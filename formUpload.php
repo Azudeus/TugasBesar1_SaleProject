@@ -1,9 +1,25 @@
 <?php
+$servername = "localhost:3307";
+    $username = "root";
+    $password = "";
+    $dbname = "saleproject";
+    session_start();
+    // Create connection
+    $conn = mysqli_connect($servername, $username, $password, $dbname);
+
+    //$_SESSION["username"] = "rellons";
+    $activeuser = $_GET["account_id"];
+    // Check connection
+    if (!$conn) {
+        echo "Connection failed: " + mysqli_connect_error();
+    }
+
+//inspired by w3schools.com
 if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $productname = $_POST["Name"];
-    $proddesc = $_POST["description"];
-    $prodprice = $_POST["price"];
-    $prodPhoto = $_POST["photochoose"];
+    $productname = $_REQUEST["Name"];
+    $proddesc = $_REQUEST["description"];
+    $prodprice = $_REQUEST["price"];
+    $prodPhoto = $_REQUEST["photochoose"];
     $target_dir = "/img/";
     $target_file = $target_dir.  basename($prodPhoto["name"]);
     $uploadOk = 1;
@@ -52,7 +68,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
             $prodquery = "INSERT INTO product "
                     . "VALUES ('$largestId+1',$activeuser,
                         . '$proddesc','0','0','$dateTime','$productname','$target_file')";
-            echo("Success");
+            if ($conn->query($prodquery)) {
+                echo "Success";
+            } else {
+                echo "Failed to update photo in database.";
+            }
         } else {
             alert("6");
         }

@@ -7,8 +7,8 @@
     // Create connection
     $conn = mysqli_connect($servername, $username, $password, $dbname);
 
-    $_SESSION["username"] = "rellons";
-
+    //$_SESSION["username"] = "rellons";
+    $activeuser = $_GET["account_id"];
     // Check connection
     if (!$conn) {
         die("Connection failed: " . mysqli_connect_error());
@@ -55,8 +55,10 @@
                                 "<span id = 'description'>" . $row["product_description"] . "</span><br>" .
                                 "<span id = 'likes'>" . $row["likes"] ." likes <br>" . 
                                 "<span id = 'purchases'>" . $row["purchase"] ." purchases<br>" .
-                                "<div id ='edit'><a href='editproduct.php'> EDIT </a> </div>". 
-                                "<div id = 'delete'><a href = 'deleteproduct.php'> DELETE </div></div>";
+                                "<div id ='edit'><a href='editproduct.php?account_id=".$activeuser.
+                                    "&edit=".$row["product_id"]."'> EDIT </a> </div>". 
+                                "<div id = 'delete'><a href = 'deleteProduct.php?prod_id=".$row["product_id"]."'>"
+                                . "<onclick = alert('Are you sure?')> DELETE </div></div>";
 		}	
 	}?>
 </body>
