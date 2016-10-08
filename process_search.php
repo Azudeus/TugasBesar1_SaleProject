@@ -54,12 +54,13 @@ if (isset($_POST['key']) && (isset($_POST['type']))) {
 	$type= $_POST['type'];
 
 	if ($type == "product") {
-		$query = "select product_id,username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product where product_name='$key'";
+		$query = "select product_id,username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product where product_name like '%$key%'";
 	} else {
-		$query = "select product_id,username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product where username='$key'";
+		$query = "select product_id,username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product where username like '%$key%'";
 	}
 	$check = mysqli_query($conn,$query);
 	$checkrows = mysqli_num_rows($check);
+	
 
 	if ($checkrows>0) {
 		$q_result = $conn->query($query);
@@ -68,15 +69,18 @@ if (isset($_POST['key']) && (isset($_POST['type']))) {
 			$phpdate = strtotime($row["product_datetime"]);
 			$mysqldate1 = date('l, d F Y',$phpdate);
 			$mysqldate2 = date('H i',$phpdate);
+			$query_checksame = $conn->query("SELECT EXISTS(SELECT * FROM likes where product_id =". $row["product_id"] ." and account_id =". $account_id.") as exist");
+			$checksame_row = $query_checksame -> fetch_assoc();
+			$checksame = $checksame_row["exist"];
 			echo "<p id = 'product'><b>". $row["username"] .
 			"</b> <br> added this on ". $mysqldate1 .", at ". $mysqldate2 ."<br><hr>".
 			"<table class = 'producttable'>
 			<tr> 
-				<td rowspan = '5' class = 'left' width = 128px> <img src = 'img/" . $row["imgsrc"] . ".JPG' style = 'width:128px;height:128px;' > </td>
-				<td colspan = '2' class = 'left'> <span id = 'itemname'>" . $row["product_name"] . "</span> </td>
+				<td rowspan = '5' width = 128px> <img src = 'img/" . $row["imgsrc"] . "' style = 'width:128px;height:128px;' > </td>
+				<td colspan = '2' > <span id = 'itemname'>" . $row["product_name"] . "</span> </td>
 			</tr>
 			<tr>
-				<td> <span id = 'price'> IDR " . $row["product_price"] . "</span> </td>
+				<td> <span id = 'price_".$row['product_id']."'></span><script>writePrice(".$row['product_price'].",".$row['product_id'].")</script> </td>
 				<td colspan = '2' class ='like_count_" .$row["product_id"]. "	'>"  . $row["likes"] . " likes </td>
 			</tr>
 			<tr> 
@@ -90,12 +94,14 @@ if (isset($_POST['key']) && (isset($_POST['type']))) {
 			
 			<tr>
 				<td></td>
-				<td class = 'likebuy'> <a class ='bluelink' product_id=". $row["product_id"] . "  href='javascript:void(0)' onclick = 'like(this)' >like</a></td>
+				<td class = 'likebuy'> <a id = 'like_".$row["product_id"]."' class ='bluelink' account_id=".$account_id." product_id=". $row["product_id"] . "  href='javascript:void(0)' onclick = 'like(this)' >like</a></td>
 				<td class = 'likebuy'> <a href='confirmbuy.php?product_id=" .$row["product_id"]."&account_id=".$account_id."' class = 'greenlink'> buy</td>
 			</tr>
 			</table>
 			<br>
-			<hr>";
+			<hr>
+			<script>update(".$row["product_id"].",". $checksame . ")</script>
+			";
 		}
 	} else {
 		echo "Search not found";
