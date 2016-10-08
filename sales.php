@@ -23,14 +23,11 @@ if (!$conn) {
 
 <!DOCTYPE html>
 <html>
-
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
 <?php include "header.php"; ?>
 <script src="script/buy.js"></script>
-
 <p id = "SubHeader">Here are your sales</p>
 <hr>
 <br>
@@ -47,7 +44,7 @@ if ($q_result-> num_rows > 0) {
 		
 		echo "<b>".$mysqldate1."</b><br>".$mysqldate2."<br><hr>";	echo "<table class='producttable'>
 			<tr>
-				<td rowspan = '5' class = 'left' width =20%> <img src = 'img/" . $row["imgsrc"] . ".JPG' style = 'width:128px;height:128px;' > </td>
+				<td rowspan = '5' class = 'left' width =20%> <img src = 'img/" . $row["imgsrc"] . "' style = 'width:128px;height:128px;' > </td>
 				<td  width = 40% class = 'font20'> <b>".$row["product_name"]."</b></td>
 				<td  width = 40% class = 'font16 top'> Delivery to <b>".$row["consignee"]."</b></td>
 			</tr>

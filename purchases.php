@@ -26,7 +26,6 @@
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
-<body>
 <?php include "header.php"; ?>
 
 
@@ -53,7 +52,7 @@
 			echo"
 			<table class ='producttable'>
 				<tr>
-					<td rowspan = '5' width = 20%;><img src = 'img/" . $row["imgsrc"] . ".JPG' style = 'width:128px;height:128px;'></td>
+					<td rowspan = '5' width = 20%;><img src = 'img/" . $row["imgsrc"] . "' style = 'width:128px;height:128px;'></td>
 					<td width = 40% class = 'font20' ><b> ". $row['product_name']."</b></td>
 					<td width = 40% class = 'font16 top'>Delivery to <b>". $row['consignee'] . " </b></td>
 				</tr>
