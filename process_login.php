@@ -26,8 +26,7 @@ if (isset($_GET['username'])) {
 		}
 		header ("Location:catalog.php?account_id=".$id);
 	} else {
-		echo "Account not found";	
-		echo mysqli_error($conn);
+		header ("Location:login.php");
 	}
 };
 ?>
