@@ -54,17 +54,22 @@ if ($q_result-> num_rows > 0) {
 			</tr>
 			<tr>
 				<td width = 40% class = 'font20'>  <span class = 'font20' id = 'total_price_".$row['purchase_id']."'></span><script>writeTotalPrice(".$row['product_price'] * $row['quantity'].",".$row['purchase_id'].")</script></td>
-				<td width = 40% class = 'font16'>" .$row["full_address"]."</td>
+				<td width = 40% class = 'font16' rowspan = '2'>" .$row["full_address"]."</td>
 			</tr>
 			<tr>
 				<td width = 40% class = 'font20'>" .$row["quantity"] . " pcs</td>
-				<td width = 40% class = 'font16'>" .$row["postal_code"]."</td>
+				
 			</tr>
 			<tr>
 				<td width = 40% class = 'font20'>@<span id = 'price_".$row['purchase_id']."'></span><script>writePrice(".$row['product_price'].",".$row['purchase_id'].")</script></td>
-				<td width = 40% class = 'font16'>" .$row["phone_number"]."</td>
+				<td width = 40% class = 'font16'>" .$row["postal_code"]."</td>
+				
 			</tr>
 			<tr>
+				<td width = 40%></td>
+				<td width = 40% class = 'font16'>" .$row["phone_number"]."</td>
+			<tr>
+				<td></td>
 				<td><p id='product'>bought by <b>" .$row["username"] . "</b></p></td>
 			</tr>
 		</table>
