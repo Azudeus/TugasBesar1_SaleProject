@@ -27,6 +27,7 @@ CREATE TABLE `purchases` (
   `product_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
   `consignee` varchar(155) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `full_address` varchar(155) NOT NULL,
   `postal_code` varchar(155) NOT NULL,
   `phone_number` int(11) NOT NULL,
