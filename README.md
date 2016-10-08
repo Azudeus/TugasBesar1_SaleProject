@@ -2,8 +2,6 @@
 
 Membuat Website Marketplace sederhana.
 
-**Luangkan waktu untuk membaca spek ini sampai selesai. Kerjakan hal yang perlu saja.**
-
 ## Deskripsi Singkat
 
 Pada tugas besar ini, Anda diminta untuk membuat aplikasi *marketplace* **berbasis web** yang memungkinkan seorang pengguna membeli dan menjual barang. Untuk menggunakan aplikasi ini, pengguna harus login terlebih dahulu. Pengguna tersebut dapat membeli dan menjual barang dengan akun yang sama.
@@ -12,7 +10,9 @@ Anda diminta untuk membuat tampilan sedemikian hingga mirip dengan tampilan pada
 
 ## Anggota Tim
 
-Setiap kelompok beranggotakan **3 orang**. Jika berlebih akan ada maksimal 2 kelompok yang beranggotakan 4 orang.
+Davin Prasetya - 13514003   
+Yeksadiningrat Al Valentino - 13514055
+
 
 ## Petunjuk Pengerjaan
 
@@ -121,21 +121,32 @@ Jika ada pertanyaan silakan tanyakan lewat milis.
 *Disarankan semua anggota kelompok mengerjakan tampilan dan fungsionalitasnya. Bukan hanya tampilan atau fungsionalitasnya saja*
 
 **Tampilan**
-1. Login : 135130xx, 135130xx
-2. Register : 135130xx
-3. Lanjutkan ...
+1. Login : 13513003,
+2. Register : 13513003
+3. Catalog : 13514055
+4. Header : 13514055
+5. Confirm Buy :13514055
+6. Your Product : 13514003,13514055
+7. Edit Product : 13514003
+8. Add Product : 13514055
+9. Sales : 13514003, 13514055
+10. Purchase : 13514055
 
 **Fungsionalitas**
-1. Login : 135130xx, 135130xx
-2. Register : 135130xx
-3. Fungsionalitas : 135130xx,135130xx
-4. Lanjutkan...
+1. Login : 13514003
+2. Register : 13514003  
+3. Catalog : 13514055
+4. Confirm Buy : 13514055
+5. Your Product : 13514003
+6. Edit Product : 13514003
+7. Add Product : 13514055
+8. Sales : 13514003
+9. Purchases : 13514055
 
 ## About
 
-Asisten IF3110 2016
+Kelompok iKan
 
-Adin | Chairuni | David | Natan | Nilta | Tifani | Wawan | William
+Davin | Yeksa | Reifi
 
 Dosen : Yudistira Dwi Wardhana | Riza Satria Perdana
-
