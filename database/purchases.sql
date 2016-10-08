@@ -27,10 +27,11 @@ CREATE TABLE `purchases` (
   `product_id` int(11) NOT NULL,
   `account_id` int(11) NOT NULL,
   `consignee` varchar(155) NOT NULL,
+  `quantity` int(11) NOT NULL,
   `full_address` varchar(155) NOT NULL,
   `postal_code` varchar(155) NOT NULL,
   `phone_number` int(11) NOT NULL,
-  `credit_number` int(11) NOT NULL,
+  `credit_number` varchar(155) NOT NULL,
   `credit_veri` int(11) NOT NULL,
   `purchase_datetime` datetime NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`purchase_id`)

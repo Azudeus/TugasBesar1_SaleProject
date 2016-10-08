@@ -28,12 +28,13 @@ if (!$conn) {
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
+<?php include "header.php"; ?>
 
 <p id = "SubHeader">Here are your sales</p>
 <hr>
 
 <?php
-	$query = "SELECT product_id,username,product_price,quantity,product_name,imgsrc,address,postal,`number`,purchase_datetime from account,purchases,product where account.account_id = purchases.account_id AND purchases.product_id = product.product_id AND product.account_id=$account_id";
+	$query = "select purchase_id,product_name,product_price,quantity,account.username,consignee,full_address,postal_code,phone_number,purchase_datetime,imgsrc from purchases,account,product where purchases.account_id = account.account_id and purchases.product_id = product.product_id and product.product_id='$account_id'";
 	$q_result = $conn->query($query);
 
 if ($q_result-> num_rows > 0) {
@@ -42,28 +43,28 @@ if ($q_result-> num_rows > 0) {
 		$mysqldate1 = date('l, d F Y',$phpdate);
 		$mysqldate2 = date('H i',$phpdate);
 
-		echo "<p id="product"><b>$mysqldate1</b><br>".
+		echo "<p id='product'><b>".$mysqldate1."</b><br>".
 		"at".$mysqldate2."<br><hr>".
 		"<table class='producttable'>
 			<tr>
 				<td rowspan = '5' class = 'left' width = 128px> <img src = 'img/" . $row["imgsrc"] . ".JPG' style = 'width:128px;height:128px;' > </td>
 				<td colspan = '2' class = 'left'> <span id = 'itemname'>" . $row["product_name"] . "</span> </td>
-				<td colspan = '2' class = 'left'> Delivery to <b>".$row["username"]."</b></td>
+				<td colspan = '2' class = 'left'> Delivery to <b>".$row["consignee"]."</b></td>
 			</tr>
 			<tr>
 				<td colspan = '2'> <span id = 'price'>IDR " . $row["product_price"]*$row["quantity"] . "</span> </td>
-				<td colspan = '2'>" .$row["address"]"</td>
+				<td colspan = '2'>" .$row["full_address"]."</td>
 			</tr>
 			<tr>
 				<td colspan = '2'>" .$row["quantity"] . " pcs</td>
-				<td colspan = '2'>" .$row["postal"]"</td>
+				<td colspan = '2'>" .$row["postal_code"]."</td>
 			</tr>
 			<tr>
 				<td colspan = '2'><span id = 'price'>@IDR " .$row["product_price"] . "</td>
-				<td colspan = '2'>" .$row["number"]"</td>
+				<td colspan = '2'>" .$row["phone_number"]."</td>
 			</tr>
 			<tr>
-				<td colspan = '2'><p id="product">bought by<b>" .$row["username"]"</td>
+				<td colspan = '2'><p id='product'>bought by<b>" .$row["username"] . "</b></p></td>
 			</tr>
 		</table>
 		<br>";

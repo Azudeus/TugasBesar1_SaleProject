@@ -36,7 +36,7 @@ Postal Code<br>
 <input type="text" name="postal" id="formField"><br><br>
 
 Phone Number<br>
-<input type="number" name="number" id="formField"><br><br>
+<input type="text" name="number" id="formField"><br><br>
 
 <div id="submitAlign">
 <input type="submit" value="Register" class="button"><br>

@@ -8,6 +8,8 @@ function validateRegister() {
     var postal = document.forms["register"]["postal"].value;
     var number = document.forms["register"]["number"].value;
     
+    var email_pattern = /\S+@\S+\.\S+/;
+    var postal_pattern = /^[0-9]{5}$/;
 
     if (name == null || name == "") {
         alert("Name must be filled out");
@@ -21,6 +23,11 @@ function validateRegister() {
 
     if (email == null || email == "") {
         alert("Email must be filled out");
+        return false;
+    }
+
+    if (!email_pattern.test(email)) {
+        alert("Email must be a valid email");
         return false;
     }
 
@@ -48,9 +55,19 @@ function validateRegister() {
         alert("Postal must be filled out");
         return false;
     }
+    
+    if (!postal_pattern.test(postal)) {
+        alert("Postal code must be a valid 5 digit number");
+        return false;
+    }
 
     if (number == null || number == "") {
-        alert("Name must be filled out");
+        alert("Phone number must be filled out");
+        return false;
+    }
+
+    if (isNaN(number)) {
+        alert("Phone number must be valid");
         return false;
     }
 }

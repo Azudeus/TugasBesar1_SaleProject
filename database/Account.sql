@@ -30,7 +30,7 @@ CREATE TABLE `account` (
   `name` varchar(155) DEFAULT NULL,
   `address` varchar(156) NOT NULL,
   `postal` int(11) NOT NULL,
-  `number` int(20) NOT NULL,
+  `number` varchar(20) NOT NULL,
   PRIMARY KEY (`account_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=latin1;
 /*!40101 SET character_set_client = @saved_cs_client */;
