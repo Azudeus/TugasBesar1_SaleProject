@@ -33,6 +33,7 @@ if (!$conn) {
 
 <p id = "SubHeader">Here are your sales</p>
 <hr>
+<br>
 
 <?php
 	$query = "select purchase_id,product_name,product_price,quantity,account.username,consignee,full_address,postal_code,phone_number,purchase_datetime,imgsrc from purchases,account,product where purchases.account_id = account.account_id and purchases.product_id = product.product_id and product.product_id='$account_id'";
@@ -43,18 +44,16 @@ if ($q_result-> num_rows > 0) {
 		$phpdate = strtotime($row["purchase_datetime"]);
 		$mysqldate1 = date('l, d F Y',$phpdate);
 		$mysqldate2 = date('H i',$phpdate);
-
-		echo "<p id='product'><b>".$mysqldate1."</b><br>"
-		.$mysqldate2."<hr>".
-		"<table class='producttable'>
+		
+		echo "<b>".$mysqldate1."</b><br>".$mysqldate2."<br><hr>";	echo "<table class='producttable'>
 			<tr>
 				<td rowspan = '5' class = 'left' width =20%> <img src = 'img/" . $row["imgsrc"] . ".JPG' style = 'width:128px;height:128px;' > </td>
 				<td  width = 40% class = 'font20'> <b>".$row["product_name"]."</b></td>
-				<td  width = 40% class = 'font16'> Delivery to <b>".$row["consignee"]."</b></td>
+				<td  width = 40% class = 'font16 top'> Delivery to <b>".$row["consignee"]."</b></td>
 			</tr>
 			<tr>
 				<td width = 40% class = 'font20'>  <span class = 'font20' id = 'total_price_".$row['purchase_id']."'></span><script>writeTotalPrice(".$row['product_price'] * $row['quantity'].",".$row['purchase_id'].")</script></td>
-				<td width = 40% class = 'font16' rowspan = '2'>" .$row["full_address"]."</td>
+				<td width = 40% class = 'font16 top' rowspan = '2'>" .$row["full_address"]."</td>
 			</tr>
 			<tr>
 				<td width = 40% class = 'font20'>" .$row["quantity"] . " pcs</td>
@@ -62,15 +61,15 @@ if ($q_result-> num_rows > 0) {
 			</tr>
 			<tr>
 				<td width = 40% class = 'font20'>@<span id = 'price_".$row['purchase_id']."'></span><script>writePrice(".$row['product_price'].",".$row['purchase_id'].")</script></td>
-				<td width = 40% class = 'font16'>" .$row["postal_code"]."</td>
+				<td width = 40% class = 'font16 top'>" .$row["postal_code"]."</td>
 				
 			</tr>
 			<tr>
 				<td width = 40%></td>
-				<td width = 40% class = 'font16'>" .$row["phone_number"]."</td>
+				<td width = 40% class = 'font16 top'>" .$row["phone_number"]."</td>
 			<tr>
 				<td></td>
-				<td><p id='product'>bought by <b>" .$row["username"] . "</b></p></td>
+				<td class = 'font18 top'>bought by <b>" .$row["username"] . "</b></p></td>
 			</tr>
 		</table>
 		<br>";

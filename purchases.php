@@ -74,9 +74,6 @@
 					<td class = 'font18 top'>bought from <b>".$row['username']."</b></td>
 				</tr>
 				
-				<tr height = 120 px;>
-				</tr>
-				
 			</table>
 			<br><br>";
 			
