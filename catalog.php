@@ -20,7 +20,7 @@ if (!$conn) {
 }
 ?>
 <script src="script/like.js"></script>
-
+<script src="script/buy.js"></script>
 
 <!DOCTYPE html>
 <html>
@@ -75,7 +75,7 @@ if (!$conn) {
 				<td colspan = '2' > <span id = 'itemname'>" . $row["product_name"] . "</span> </td>
 			</tr>
 			<tr>
-				<td> <span id = 'price'> IDR " . $row["product_price"] . "</span> </td>
+				<td> <span id = 'price_".$row['product_id']."'></span><script>writePrice(".$row['product_price'].",".$row['product_id'].")</script> </td>
 				<td colspan = '2' class ='like_count_" .$row["product_id"]. "	'>"  . $row["likes"] . " likes </td>
 			</tr>
 			<tr> 

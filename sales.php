@@ -29,6 +29,7 @@ if (!$conn) {
 </head>
 <body>
 <?php include "header.php"; ?>
+<script src="script/buy.js"></script>
 
 <p id = "SubHeader">Here are your sales</p>
 <hr>
@@ -43,28 +44,28 @@ if ($q_result-> num_rows > 0) {
 		$mysqldate1 = date('l, d F Y',$phpdate);
 		$mysqldate2 = date('H i',$phpdate);
 
-		echo "<p id='product'><b>".$mysqldate1."</b><br>".
-		"at".$mysqldate2."<br><hr>".
+		echo "<p id='product'><b>".$mysqldate1."</b><br>"
+		.$mysqldate2."<hr>".
 		"<table class='producttable'>
 			<tr>
-				<td rowspan = '5' class = 'left' width = 128px> <img src = 'img/" . $row["imgsrc"] . ".JPG' style = 'width:128px;height:128px;' > </td>
-				<td colspan = '2' class = 'left'> <span id = 'itemname'>" . $row["product_name"] . "</span> </td>
-				<td colspan = '2' class = 'left'> Delivery to <b>".$row["consignee"]."</b></td>
+				<td rowspan = '5' class = 'left' width =20%> <img src = 'img/" . $row["imgsrc"] . ".JPG' style = 'width:128px;height:128px;' > </td>
+				<td  width = 40% class = 'font20'> <b>".$row["product_name"]."</b></td>
+				<td  width = 40% class = 'font16'> Delivery to <b>".$row["consignee"]."</b></td>
 			</tr>
 			<tr>
-				<td colspan = '2'> <span id = 'price'>IDR " . $row["product_price"]*$row["quantity"] . "</span> </td>
-				<td colspan = '2'>" .$row["full_address"]."</td>
+				<td width = 40% class = 'font20'>  <span class = 'font20' id = 'total_price_".$row['purchase_id']."'></span><script>writeTotalPrice(".$row['product_price'] * $row['quantity'].",".$row['purchase_id'].")</script></td>
+				<td width = 40% class = 'font16'>" .$row["full_address"]."</td>
 			</tr>
 			<tr>
-				<td colspan = '2'>" .$row["quantity"] . " pcs</td>
-				<td colspan = '2'>" .$row["postal_code"]."</td>
+				<td width = 40% class = 'font20'>" .$row["quantity"] . " pcs</td>
+				<td width = 40% class = 'font16'>" .$row["postal_code"]."</td>
 			</tr>
 			<tr>
-				<td colspan = '2'><span id = 'price'>@IDR " .$row["product_price"] . "</td>
-				<td colspan = '2'>" .$row["phone_number"]."</td>
+				<td width = 40% class = 'font20'>@<span id = 'price_".$row['purchase_id']."'></span><script>writePrice(".$row['product_price'].",".$row['purchase_id'].")</script></td>
+				<td width = 40% class = 'font16'>" .$row["phone_number"]."</td>
 			</tr>
 			<tr>
-				<td colspan = '2'><p id='product'>bought by<b>" .$row["username"] . "</b></p></td>
+				<td><p id='product'>bought by <b>" .$row["username"] . "</b></p></td>
 			</tr>
 		</table>
 		<br>";
