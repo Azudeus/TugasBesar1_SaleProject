@@ -27,12 +27,12 @@
 <head>
     <title> Edit Product </title>
     <link rel="stylesheet" type="text/css" href="style.css">
-    <script type="text/javascript" src ="myEditProduct.js"></script>
 </head>
 <body>
 <?php include "header.php"; ?>
 
-</body>
+<script src="script/validateEdit.js"></script>
+
 <p id = "SubHeader">Please update your product here. <br>
 
 <?php
@@ -48,7 +48,7 @@ while($row = $q_result-> fetch_assoc()) {
 
 echo "
     <div id = 'formField'>
-    <form name='edit_product' action='' method='post'>
+    <form name='edit_product' action='' method='post' onSubmit='return validateEdit()'>
         <input type='hidden' name='username' value='".$account_username."'>
         Name <br>
             <input type='text' name='name' id='formField' value='".$pName."'><br><br>
@@ -60,8 +60,7 @@ echo "
             <input type ='file' name= 'photochoose'>
      <table>
          <td> <input type = 'submit' id = 'addbutton' value ='UPDATE'> </td>
-         <td> <input type = 'reset' id = 'cancelbutton' value ='CANCEL'
-                     onclick = 'myProductCancel(<?php echo($activeuser) ?>)'></form></td</div>
+         <td> <input type = 'reset' id = 'cancelbutton' value ='CANCEL'></form></td</div>
      </table>
 </div>"
 
