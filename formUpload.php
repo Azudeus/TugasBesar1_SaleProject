@@ -1,82 +1,43 @@
 <?php
-$servername = "localhost:3307";
+	$servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "saleproject";
+    $dbname = "SaleProject";
     session_start();
     // Create connection
     $conn = mysqli_connect($servername, $username, $password, $dbname);
 
     //$_SESSION["username"] = "rellons";
-    $activeuser = $_GET["account_id"];
+    $activeuser = $_POST["account_username"];
     // Check connection
     if (!$conn) {
         echo "Connection failed: " + mysqli_connect_error();
     }
+	$account_id = $_POST ["account_id"];
 
 //inspired by w3schools.com
-if($_SERVER["REQUEST_METHOD"] == "POST"){
-    $productname = $_REQUEST["Name"];
-    $proddesc = $_REQUEST["description"];
-    $prodprice = $_REQUEST["price"];
-    $prodPhoto = $_REQUEST["photochoose"];
-    $target_dir = "/img/";
-    $target_file = $target_dir.  basename($prodPhoto["name"]);
+
+    $productname = $_POST["name"];
+    $proddesc = $_POST["description"];
+    $prodprice = $_POST["price"];
+    $target_dir = "img/";
+	$file_db = basename($_FILES["photochoose"]["name"]);
+    $target_file = $target_dir.basename($_FILES["photochoose"]["name"]);
     $uploadOk = 1;
-    $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-    // Check if image file is a actual image or fake image
-    if(isset($prodPhoto)) {
-        $check = getimagesize($_REQUEST["photochoose"]["tmp_name"]);
-        if($check !== false) {
-            $uploadOk = 1;
-        } else {
-            echo "1";
-            $uploadOk = 0;
-        }
-    }
-    else if(isset($prodPhoto) && count($prodPhoto) > 1){
-        echo "2";
-        $uploadOk = 0;
-    }
-    // Check if file already exists
-    else if (file_exists($target_file)) {
-        echo "3";
-        $uploadOk = 0;
-    }
-    /*
-    // Check file size
-    if ($prodphoto["size"] > 500000) {
-        echo "Sorry, your file is too large.";
-        $uploadOk = 0;
-    }*/
-    // Allow certain file formats
-    else if($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType != "jpeg"
-    && $imageFileType != "gif" ) {
-        echo "4";
-        $uploadOk = 0;
-    }
-    // Check if $uploadOk is set to 0 by an error
-    if ($uploadOk == 0) {
-        echo "5";
-    // if everything is ok, try to upload file
-    } else {
-        if (move_uploaded_file($prodPhoto["tmp_name"], $target_file)) {
-            //buat query untuk menentukan id terbesar
-            $queryForLargestId = "SELECT MAX(product_id) FROM product";
-            $largestId = $conn->query($queryForLargestId);
-            $dateTime = time();
-            $prodquery = "INSERT INTO product "
-                    . "VALUES ('$largestId+1',$activeuser,
-                        . '$proddesc','0','0','$dateTime','$productname','$target_file')";
-            if ($conn->query($prodquery)) {
-                echo "Success";
-            } else {
-                echo "Failed to update photo in database.";
-            }
-        } else {
-            alert("6");
-        }
-        
+    
+  $prodquery = "INSERT INTO product(username,product_description,product_price,product_name,imgsrc)
+					VALUES ('".$activeuser."','".$proddesc."',".$prodprice.",'".$productname."','".$file_db."');";
+	if ($conn->query($prodquery)) {
+		echo "Success";
+	} else {
+		echo "Connection failed: " + mysqli_connect_error();
+	}	
+	
+    if (!file_exists($target_file)) {
+        move_uploaded_file($_FILES["photochoose"]["tmp_name"], $target_file);
     }    
-}
+	
+	echo "<script> document.location.href = 'catalog.php?account_id='+".$account_id.";</script>";	
+
+
 ?>

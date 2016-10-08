@@ -1,48 +1,42 @@
+function getExtension(filename) {
+    var parts = filename.split('.');
+    return parts[parts.length - 1];
+}
+
 //validate user input
 function myProductValidate(update, productId){
-    var name = document.getElementById("Name").value;
-    var desc = document.getElementById("description").value;
-    var prc = document.getElementById("price").value;
-    var formInName = new String(name);
+    var name = document.getElementsByName("name")[0].value;
+    var desc = document.getElementsByName("description")[0].value;
+    var prc = document.getElementsByName("price")[0].value;
+	var file = document.getElementsByName("photochoose")[0].value;
+    /*var formInName = new String(name);
     var formInDesc = new String(desc);
     var formInPrice = new String(prc);
-    var allvalid = true;
+    var allvalid = true;*/
     //Cek kevalidan nama produk
-    if(!(name && formInName.length <= 200 && !/(<*>)/.test(formInName))){
-        if(!name){
-            alert("Product name field cannot be empty.");
-        }
-        else if(formInName.length > 200){
-            alert("Product name too long (max 200)");
-        } 
-        else
-            alert("Product name invalid");
-        allvalid = false;
-    }
     //Cek kevalidan deskripsi produk
-    if(!(desc && formInDesc.length <= 200 && !/(<*>)/.test(formInDesc))){
-        if(!desc){
-            alert("Product description field cannot be empty.");
-        }
-        else if(formInDesc.length > 200){
-            alert("Description too long (max 200)");
-        }
-        else
-            alert("Description invalid");
-        allvalid = false;
-    }
     //Cek kevalidan harga
-    if(!(prc && formInPrice.length <= 200 && formInPrice.match(/^[0-9][0-9]*[0-9]$/))){
-        if(!prc){
-            alert("Price field cannot be empty");
-        }
-        else if(formInPrice.length > 200){
-            alert("Price input too long (max 200 numbers");
-        }
-        else
-            alert("Price must be integer and not 0");
-        allvalid = false;
-    }
+    
+	if((name.length==0) || (desc.length == 0) || (prc.length == 0) || (file.length == 0)){
+		alert("Field must be not empty");
+		return false;
+	}
+	
+	if(isNaN(prc)){
+		alert("Price must be a number");
+		return false;
+	}
+	
+	if(desc.length>200){
+		alert("Description must be fewer than 200 character");
+		return false;	
+	}
+	
+	if(getExtension(file)!='jpg'){
+		alert("Photo must be JPG");
+		return false;
+	}
+	/*
     //Jika nama, deskripsi, dan harga valid, maka coba untuk submit
     if(allvalid){
         var data = new FormData();
@@ -94,7 +88,7 @@ function myProductValidate(update, productId){
         }
         xconnect.setRequestHeader("Content-Type", "multipart/form-data");
         xconnect.send(data);
-    }
+    }*/
  }
         
 //jika cancel, maka tampilkan dialog "Are you sure you want to cancel? dan redirect

@@ -26,31 +26,30 @@
     <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src ="myAddProduct.js"></script>
 </head>
-<body>
 <?php include "header.php" ?>
-</body>
 <!-- TODO : validasi-->
-<p id = "SubHeader">Please add your product here. <br>
-<!--
-<form name ="myProductForm" onsubmit="return myProductValidate(myProductForm)" 
+<p id = "SubHeader">Please add your product here.
+<hr>
+<form action="formUpload.php" method="post" name ="myProductForm" onsubmit="return myProductValidate(myProductForm)" 
       action="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST"
       enctype="multipart/form-data">
-        <span id = "fName"> Name </spa	n><br>
-        <input type ="text" name ="Name"><br>
+        <span id = "fName"> Name </span><br>
+        <input type ="text" name ="name" class = "width100"><br><br>
         <span id = "fDesc"> Description (max 200 chars) </span><br>
-        <input type ="text" name ="description"><br>
+        <input type ="text" name ="description" class = "width100 height100"  ><br><br>
         <span id = "fPrice"> Price(IDR) </span><br>
-        <input type ="text" name ="price"><br>
+        <input type ="text" name ="price" class = "width100" ><br><br>
         <span id = "pphoto"> Photo </span> <br>
         <input type ="file" name = "photochoose">
-        <input type="hidden" name = "ausername" value="<?php //$username?>"</p>
-     <table>
-         <td> <input type = "submit" id = "addbutton" value ="ADD"> 
-         <td> <input type = "button" id = "cancelbutton" value ="CANCEL" 
-                     onclick = "myProductCancel(<?php //echo($account_id) ?>)">
-     </table>
-</form>-->
-
+		<input type="hidden" name = "account_username" value="<?php echo $account_username?>"</p>
+        <input type="hidden" name = "account_id" value="<?php echo $account_id?>"</p>
+		<div class ="right">
+        <input type = "submit" id = "addbutton" class ="button" value ="ADD"> 
+        <input type = "button" id = "cancelbutton" class ="button" value ="CANCEL" 
+                     onclick = "myProductCancel(<?php echo $account_id ?>)">
+		</div>
+</form>
+<!--
 <div id = MyForm>
         <span id = "fName"> Name </span><br>
         <input type ="text" id ="Name"><br>
@@ -67,5 +66,6 @@
                      onclick = "myProductCancel(<?php echo($account_id) ?>)">
      </table>
 </div>
+-->
 </body>
 </html>
