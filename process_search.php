@@ -3,34 +3,34 @@ $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "saleproject";
-session_start();
-// Create connection
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-$account_id = $_GET["account_id"];
+
 $tab = "catalog";
+$account_id = $_POST['id'];
+
+$conn = mysqli_connect($servername, $username, $password, $dbname);
+if (!$conn) {
+    die("Connection failed: " . mysqli_connect_error());
+}
 
 $account_query = "SELECT username from account where account_id =".$account_id;
 $account_query_result = $conn->query($account_query);
 $account_query_assoc = $account_query_result->fetch_assoc();
 $account_username = $account_query_assoc["username"];
 
-// Check connection
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
-}
 ?>
 <script src="script/like.js"></script>
-
 
 <!DOCTYPE html>
 <html>
 <head>
 <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+<body>
 <?php include "header.php"; ?>
 
-<p id = "SubHeader">What are you going to buy today?</p>
+<p id = "SubHeader">Search Result</p>
 <hr>
+
 
 <form name="search" action = "process_search.php" method ="POST">
 <table border='0' width = '100%'>
@@ -49,12 +49,21 @@ if (!$conn) {
 </form>
 
 <?php
+if (isset($_POST['key']) && (isset($_POST['type']))) {
+	$key = $_POST['key'];
+	$type= $_POST['type'];
 
-	$query = "SELECT product_id,username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product";
-	$q_result = $conn->query($query);
-	
-	if($q_result-> num_rows > 0){
-		//output data of each row from database
+	if ($type == "product") {
+		$query = "select product_id,username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product where product_name='$key'";
+	} else {
+		$query = "select product_id,username,product_description,product_price,likes,purchase,product_datetime,product_name,imgsrc from product where username='$key'";
+	}
+	$check = mysqli_query($conn,$query);
+	$checkrows = mysqli_num_rows($check);
+
+	if ($checkrows>0) {
+		$q_result = $conn->query($query);
+
 		while($row = $q_result-> fetch_assoc()){
 			$phpdate = strtotime($row["product_datetime"]);
 			$mysqldate1 = date('l, d F Y',$phpdate);
@@ -88,8 +97,14 @@ if (!$conn) {
 			<br>
 			<hr>";
 		}
-		
-	}?>
+	} else {
+		echo "Search not found";
+	}
+} else {
+	header ("Location:catalog.php?account_id=".$account_id);
+}
+?>
+
 
 </body>
 </html>
