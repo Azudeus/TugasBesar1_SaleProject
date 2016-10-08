@@ -35,40 +35,40 @@ $row = $q_result-> fetch_assoc();
 <p id = "SubHeader">Please confirm your purchase</p>
 <hr>
 <br>
-<form action="confirmbuy_action.php?account_id=<?php echo $account_id?> " method="get" class = "inline">
+<form action="confirmbuy_action.php?" method="get" class = "inline" onsubmit ="return buyVerification()">
 <pre><div class = 'font20 lineheight15'>
 Product		: <?php echo $row["product_name"]?><br>
 Price 		: <span id="price"></span><br><script>writePrice(<?php echo $row["product_price"] ?>)</script>
-Quantity		: <input name="quantity" price =<?php echo $row["product_price"]?> type = "text" onkeyup ="buy(this)" class = "quantity"> pcs<br>
+Quantity		: <input name="quantity" price =<?php echo $row["product_price"]?> type = "text" onkeyup ="buy(this)" class = "quantity" required> pcs<br>
 Total Price 	: <span class = "total_price"> Please insert Quantity</span>	<br>
 Deliver to		:
 </div>
 </pre>
 <div class = 'font18'>
 Consignee<br>
-<input name="consignee" type="text" class = "width100">
+<input name="consignee" type="text" required class = "width100">
 <br><br>
 Full Address<br>
-<input name="full_address" type="text" class = "tworow width100">
+<input name="full_address" type="text" required class = "tworow width100">
 <br><br>
 Postal Code<br>
-<input name="postal_code" type="text" class = "width100">
+<input name="postal_code" type="text" required class = "width100">
 <br><br>
 Phone Number<br>
-<input name="phone_number" type="text" class = "width100">
+<input name="phone_number" type="text" required class = "width100">
 <br><br>
 12 Digits Credit Card Number
-<input name="credit_number" type="text" class = "width100">
+<input name="credit_number" type="text" required class = "width100">
 <br><br>
 3 Digits Card Verification Value
-<input name="credit_veri" type="text" class = "width100">
+<input name="credit_veri" type="text" required class = "width100">
 <input name="account_id" type="hidden" value = "<?php echo $account_id?>" >
 <input name="product_id" type="hidden" value = "<?php echo $product_id?>" >
 
 <br><br>
 <div class = "right">
 <br>
-<input type = "submit" value="Submit" class = "button">
+<input type = "submit" value="Submit" class = "button" >
 <a href="catalog.php" class = "button"> Cancel </a></div>
 </form>
 

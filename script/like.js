@@ -1,15 +1,3 @@
-function money_f(x){
-  var r = Math.floor( x / 1000 );
-  var x = Math.floor( x % 1000 );
-
-  var x_str = x.toString();
-  while( x_str.length < 3 ) x_str = "0" + x_str;
-
-  if( r == 0 )
-    return "IDR " + x;
-  else
-    return money_f(r) + "." + x_str;
-}
 
 function like(element){
 	var p_id = 'like_count_' + element.getAttribute("product_id");
@@ -18,7 +6,9 @@ function like(element){
 	xhttp = new XMLHttpRequest();
 	
 	if (element.innerHTML =='like'){
-		element.innerHTML = 'unlike';
+		element.innerHTML = 'liked';
+		element.className = "redlink";
+		
 		var count = parseInt(document.getElementsByClassName(p_id)[0].innerHTML) + 1;
 		document.getElementsByClassName(p_id)[0].innerHTML = count + " likes";
 		xhttp.open("GET", "like.php?account_id="+account_id+"&product_id="+product_id+"&operation=add",true);
@@ -26,6 +16,7 @@ function like(element){
 	}
 	else{
 		element.innerHTML = 'like';
+		element.className = "bluelink";
 		var count = parseInt(document.getElementsByClassName(p_id)[0].innerHTML) - 1;
 		document.getElementsByClassName(p_id)[0].innerHTML = count + " likes";
 		xhttp.open("GET", "like.php?account_id="+account_id+"&product_id="+product_id+"&operation=min",true)
@@ -37,10 +28,13 @@ function update(a,b){
 	var pid = 'like_'+ a;
 	if(b==0){
 		document.getElementById(pid).innerHTML = "like";
+		document.getElementById(pid).className = "bluelink";
+		
 	}
 	else{
 	if(b==1)
-		document.getElementById(pid).innerHTML = "unlike";	
+		document.getElementById(pid).innerHTML = "liked";	
+		document.getElementById(pid).className = "redlink";
 	}
 		
 }

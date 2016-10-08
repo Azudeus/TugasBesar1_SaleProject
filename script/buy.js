@@ -26,3 +26,28 @@ function buy(element){
 	}
 
 }
+
+function buyVerification(){
+	var quantity = document.getElementsByName("quantity")[0].value;
+	if (isNaN(quantity)) {
+		alert("quantity must be number");
+		return false;
+	}
+	var credit_number = document.getElementsByName("credit_number")[0].value;
+	var credit_number_regex = /^\d{12}$/;
+	
+	if(!credit_number_regex.test(credit_number)){
+		alert("Credit number must be 12 digit")
+		return false;
+	}
+	
+	var cvc = document.getElementsByName("credit_veri")[0].value;
+	var cvc_regex = /^\d{3}$/;
+	if(!cvc_regex.test(cvc)){
+		alert("CVC must be 3 digit");
+		return false;	
+	}
+	
+		
+	
+}
