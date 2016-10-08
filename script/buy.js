@@ -39,11 +39,23 @@ function buy(element){
 
 function buyVerification(){
 	var quantity = document.getElementsByName("quantity")[0].value;
+	var cvc = document.getElementsByName("credit_veri")[0].value;
+	var credit_number = document.getElementsByName("credit_number")[0].value;
+	var consignee = document.getElementsByName("consignee")[0].value;
+	var address = document.getElementsByName("full_address")[0].value;
+	var post = document.getElementsByName("postal_code")[0].value;
+	var phone = document.getElementsByName("phone_number")[0].value;
+	
+	if((quantity.length == 0) ||(cvc.length ==0 ) || (credit_number.length == 0) || (consignee.length == 0) || (address.length == 0) || (post.length == 0) || (phone.length ==0)){
+		alert ("Field must be not empty");
+		return false;
+		
+	}
 	if (isNaN(quantity)) {
 		alert("quantity must be number");
 		return false;
 	}
-	var credit_number = document.getElementsByName("credit_number")[0].value;
+
 	var credit_number_regex = /^\d{12}$/;
 	
 	if(!credit_number_regex.test(credit_number)){
@@ -51,7 +63,7 @@ function buyVerification(){
 		return false;
 	}
 	
-	var cvc = document.getElementsByName("credit_veri")[0].value;
+
 	var cvc_regex = /^\d{3}$/;
 	if(!cvc_regex.test(cvc)){
 		alert("CVC must be 3 digit");
