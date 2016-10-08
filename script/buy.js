@@ -12,8 +12,18 @@ function money_f(x){
     return money_f(r) + "." + x_str;
 }
 
-function writePrice(a){
+function writePriceConfirm(a){
 	document.getElementById("price").innerHTML = money_f(a);
+}
+
+function writeTotalPrice(a, b){
+	var ID = 'total_price_'+b;
+	document.getElementById(ID).innerHTML = money_f(a);	
+}
+
+function writePrice(a, b){
+	var ID = 'price_'+b;
+	document.getElementById(ID).innerHTML = money_f(a);	
 }
 function buy(element){
 	var value = parseInt( element.value );

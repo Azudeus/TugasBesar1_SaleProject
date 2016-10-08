@@ -71,8 +71,8 @@ if (!$conn) {
 			"</b> <br> added this on ". $mysqldate1 .", at ". $mysqldate2 ."<br><hr>".
 			"<table class = 'producttable'>
 			<tr> 
-				<td rowspan = '5' class = 'left' width = 128px> <img src = 'img/" . $row["imgsrc"] . ".JPG' style = 'width:128px;height:128px;' > </td>
-				<td colspan = '2' class = 'left'> <span id = 'itemname'>" . $row["product_name"] . "</span> </td>
+				<td rowspan = '5' width = 128px> <img src = 'img/" . $row["imgsrc"] . ".JPG' style = 'width:128px;height:128px;' > </td>
+				<td colspan = '2' > <span id = 'itemname'>" . $row["product_name"] . "</span> </td>
 			</tr>
 			<tr>
 				<td> <span id = 'price'> IDR " . $row["product_price"] . "</span> </td>

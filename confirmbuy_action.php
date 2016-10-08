@@ -30,7 +30,7 @@
 	} else {
 		echo "Error updating record: " . $conn->error;
 	}
-	echo "<script> document.location.href = 'catalog.php?account_id='+".$account_id.";</script>";	
+	echo "<script> document.location.href = 'purchases.php?account_id='+".$account_id.";</script>";	
 
 
 ?>

@@ -27,6 +27,10 @@ body{
 	font-size : 18px;
 }
 
+.font16{
+	font-size : 16px;
+}
+
 .button {
     background-color: lightskyblue;
     border: none;
@@ -93,6 +97,11 @@ color: black;}
 	font : 20px arial;
 }
 
+.top{
+	vertical-align : top;
+}
+
+
 #catalog td, th {
 	text-transform : capitalize;
     border: 3px solid black;
@@ -134,10 +143,11 @@ color: black;}
 	}
 
 .producttable tr{
-	height : 11px;
+	height : 8px;
 
 
 }
+
 
 .producttable td.right{
 	text-align : right;

@@ -38,7 +38,7 @@ $row = $q_result-> fetch_assoc();
 <form action="confirmbuy_action.php?" method="get" class = "inline" onsubmit ="return buyVerification()">
 <pre><div class = 'font20 lineheight15'>
 Product		: <?php echo $row["product_name"]?><br>
-Price 		: <span id="price"></span><br><script>writePrice(<?php echo $row["product_price"] ?>)</script>
+Price 		: <span id="price"></span><br><script>writePriceConfirm(<?php echo $row["product_price"] ?>)</script>
 Quantity		: <input name="quantity" price =<?php echo $row["product_price"]?> type = "text" onkeyup ="buy(this)" class = "quantity" required> pcs<br>
 Total Price 	: <span class = "total_price"> Please insert Quantity</span>	<br>
 Deliver to		:
