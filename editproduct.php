@@ -1,11 +1,18 @@
 <?php
-    $servername = "localhost:3307";
+    $servername = "localhost";
     $username = "root";
     $password = "";
     $dbname = "saleproject";
     session_start();
     // Create connection
-    $conn = mysqli_connect($servername, $username, $password, $dbname);
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+	$account_id = $_GET["account_id"];
+	$tab = "your_product";
+
+	$account_query = "SELECT username from account where account_id =".$account_id;
+	$account_query_result = $conn->query($account_query);
+	$account_query_assoc = $account_query_result->fetch_assoc();
+	$account_username = $account_query_assoc["username"];
 
     //$_SESSION["username"] = "rellons";
     $activeuser = $_GET["account_id"];
@@ -19,23 +26,11 @@
 <html>
 <head>
     <title> Edit Product </title>
-    <link rel="stylesheet" type="text/css" href="yourProduct.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
     <script type="text/javascript" src ="myEditProduct.js"></script>
 </head>
 <body>
-<h1 id = "title"><span id="sale">Sale</span><span id="project">Project</span></h1>
-<h2 id = "hellouser">Hi, <?php echo $activeuser; ?> !</h2>
-<h2 id = "logout">logout</h3><br>
-
-<table id = "catalog">
-	<tr>
-		<td class = "nobg"><a href="catalog.php">catalog</a></td>
-		<td class = "nobg"><a href="yourproduct.php">your product</a></td>
-		<td class = "blue"><a href="addproduct.php" id = "bluelink">add product</a></td>
-		<td class = "nobg"><a href="sales.php">sales</a></td>
-		<td class = "nobg"><a href="purchases.php">purchases</a></td>
-	</tr>
-</table>
+<?php include "header.php"; ?>
 
 </body>
 <!-- TODO : validasi-->
@@ -70,7 +65,7 @@ $pPrice = $conn->query($qPrice);
 ?>
 <div id = MyForm>
         <span id = "fName"> Name </span><br>
-        <input type ="text" id ="Name" value = <?php echo $pName?>><br>
+        <input type ="text" class ="inline" id ="Name" value = "<?php $pName?>></input><br>
         <span id = "fDesc"> Description (max 200 chars) </span><br>
         <input type ="text" id ="description value = <?php echo $pDesc ?>"><br>
         <span id = "fPrice"> Price(IDR) </span><br>
