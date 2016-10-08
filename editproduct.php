@@ -33,27 +33,8 @@
 <?php include "header.php"; ?>
 
 </body>
-<!-- TODO : validasi-->
 <p id = "SubHeader">Please update your product here. <br>
-<!--
-<form name ="myProductForm" onsubmit="return myProductValidate(myProductForm)" 
-      action="<?php //echo htmlspecialchars($_SERVER["PHP_SELF"])?>" method="POST"
-      enctype="multipart/form-data">
-        <span id = "fName"> Name </span><br>
-        <input type ="text" name ="Name"><br>
-        <span id = "fDesc"> Description (max 200 chars) </span><br>
-        <input type ="text" name ="description"><br>
-        <span id = "fPrice"> Price(IDR) </span><br>
-        <input type ="text" name ="price"><br>
-        <span id = "pphoto"> Photo </span> <br>
-        <input type ="file" name = "photochoose">
-        <input type="hidden" name = "ausername" value="<?php //$username?>"</p>
-     <table>
-         <td> <input type = "submit" id = "addbutton" value ="ADD"> 
-         <td> <input type = "button" id = "cancelbutton" value ="CANCEL" 
-                     onclick = "myProductCancel(<?php //echo($activeuser) ?>)">
-     </table>
-</form>-->
+
 <?php
 $prodid = $_GET["product_id"];
 $query = "SELECT * from product where product_id=".$prodid;
@@ -67,20 +48,20 @@ while($row = $q_result-> fetch_assoc()) {
 
 echo "
     <div id = 'formField'>
-    <form name='edit_product' action = '' method ='POST' onSubmit='return validateEdit()'>
+    <form name='edit_product' action='' method='post'>
+        <input type='hidden' name='username' value='".$account_username."'>
         Name <br>
             <input type='text' name='name' id='formField' value='".$pName."'><br><br>
         Description(max 200 chars) <br>
-            <textarea rows='3' cols='50' name='address' id='formField' value='".$pDesc."'></textarea><br><br>
+            <textarea rows='3' cols='200' name='description' id='formField'>".$pDesc."</textarea><br><br>
         Price (IDR)<br>
             <input type='text' name='price' id='formField' value='".$pPrice."'><br><br>
         Photo <br>
             <input type ='file' name= 'photochoose'>
-        <input type='hidden' id = 'username' value='".$username."'</p>
      <table>
          <td> <input type = 'submit' id = 'addbutton' value ='UPDATE'> </td>
          <td> <input type = 'reset' id = 'cancelbutton' value ='CANCEL'
-                     onclick = 'myProductCancel(<?php echo($activeuser) ?>)'></td>
+                     onclick = 'myProductCancel(<?php echo($activeuser) ?>)'></form></td</div>
      </table>
 </div>"
 
@@ -89,3 +70,6 @@ echo "
 </html>
 
 
+<?php
+include "process_edit.php"
+?>

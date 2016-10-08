@@ -94,8 +94,7 @@
             <script>update(".$product_id.",". $checksame . ")</script>
             ";
         }
-        
-    }?>
+       
 }?>
 
 </body>
