@@ -1,9 +1,9 @@
-function validateRegister() {
-    var username = document.forms["register"]["username"].value;
-    var password = document.forms["register"]["password"].value;    
+function validateLogin() {
+    var username = document.forms["login"]["username"].value;
+    var password = document.forms["login"]["password"].value;    
 
     if (username == null || username == "") {
-        alert("username must be filled out");
+        alert("Username or Email must be filled out");
         return false;
     }
 
