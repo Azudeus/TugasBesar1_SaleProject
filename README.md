@@ -12,6 +12,7 @@ Anda diminta untuk membuat tampilan sedemikian hingga mirip dengan tampilan pada
 
 Davin Prasetya - 13514003   
 Yeksadiningrat Al Valentino - 13514055
+Muhammad Reifiza - 13514103
 
 
 ## Petunjuk Pengerjaan
@@ -137,9 +138,9 @@ Jika ada pertanyaan silakan tanyakan lewat milis.
 2. Register : 13514003  
 3. Catalog : 13514055
 4. Confirm Buy : 13514055
-5. Your Product : 13514003
-6. Edit Product : 13514003
-7. Add Product : 13514055
+5. Your Product : 13514003,13514103
+6. Edit Product : 13514003,13514103
+7. Add Product : 13514055,13514103
 8. Sales : 13514003
 9. Purchases : 13514055
 
