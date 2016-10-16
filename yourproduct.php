@@ -27,6 +27,8 @@
 </head>
 <body>
 <?php include "header.php"; ?>
+<script src="script/confirmation.js"></script>
+
 <p id = "SubHeader">What are you going to sell today?</p>
 <?php
 	$query = "SELECT * FROM product WHERE username = '". $account_username."'";
@@ -67,7 +69,7 @@
             <tr>
                 <td></td>
                 <td class = 'likebuy'> <a href='editproduct.php?product_id=".$row["product_id"]."&account_id=".$account_id."' > EDIT</td>
-                <td class = 'likebuy'> <a href='deleteProduct.php?product_id=" .$row["product_id"]."&account_id=".$account_id."' class = 'greenlink'> DELETE</td>
+                <td class = 'likebuy'> <a href='deleteProduct.php?product_id=" .$row["product_id"]."&account_id=".$account_id."' class = 'greenlink' onclick='return confirmation()'> DELETE</td>
             </tr>
             </table>
             <br>
